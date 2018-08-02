@@ -11,12 +11,14 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 //helper class
-public class bookHelper {
+public class BookHelper {
 
-	public static void readFromFile() {
-
+	public static ArrayList<Book>  readFromFile(String book) {
+		ArrayList <Book> bList = new ArrayList<>(); 
+		boolean status = false; 
 		// creating a read file class
 
 		String fileName = "booklist.txt"; // my txt file name
@@ -32,18 +34,38 @@ public class bookHelper {
 			// will act like scanner
 
 			String lineRead = reader.readLine(); // will read each line from reader
+			String [] prompt = new String [5];
+			
+			
+			
 			while (lineRead != null) {
-				System.out.println(lineRead);
+				prompt = lineRead.split(",");
+								
+				if (prompt[3].equalsIgnoreCase("false")) {
+			status = false;
+				}
+				else if (prompt[3].equalsIgnoreCase("true")) {
+					status = true;
+				}
+				
+				Book display = new Book(prompt[0],prompt[1], prompt [2], status, prompt [4]);
+				bList.add(display);
+				
+				
+//				System.out.println(lineRead);
 				lineRead = reader.readLine(); // this will read the next line
 			}
 			reader.close();
 
-			// } catch (FileNotFoundException e) {
+			} catch (FileNotFoundException e) {
+				System.out.println("File is not found");
+			
 
 		} catch (IOException e) { // catching it from parent class using catch clause
 			System.out.println("This book does not exist..");
 
 		}
+		return bList;
 	}
 		
 		public static void writeToFiles(String book) { //is this part right?***
