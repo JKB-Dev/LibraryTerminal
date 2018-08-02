@@ -13,7 +13,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 //helper class
-public class bookHelper {
+public class BookHelper {
 
 	public static void readFromFile() {
 
