@@ -6,9 +6,14 @@ public class BookApp {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ArrayList<Book> book = new ArrayList<>();
+		ArrayList<Book> bookList = new ArrayList<>();
 		
-		book = BookHelper.readFromFile();
+		bookList = BookHelper.readFromFile();
+		System.out.println(bookList.toString(););
 	}
+	
+	
+	
+	
 
 }
